@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/")
-public class UserContoller {
+public class UserController {
 
     private JwtUserDetailsService jwtUserDetailsService;
 
     @Autowired
-    public UserContoller(JwtUserDetailsService jwtUserDetailsService) {
+    public UserController(JwtUserDetailsService jwtUserDetailsService) {
         this.jwtUserDetailsService = jwtUserDetailsService;
     }
 
