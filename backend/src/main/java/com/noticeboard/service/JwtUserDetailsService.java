@@ -5,6 +5,7 @@ import com.noticeboard.model.RoleName;
 import com.noticeboard.model.User;
 import com.noticeboard.repositories.RoleRepository;
 import com.noticeboard.repositories.UserRepository;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,7 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,6 +34,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         this.roleRepository = roleRepository;
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -45,7 +49,15 @@ public class JwtUserDetailsService implements UserDetailsService {
                 true,
                 true,
                 true,
-                new ArrayList<>());
+                getAuthorities(user.get()));
+    }
+
+    private Set<SimpleGrantedAuthority> getAuthorities(User user) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        user.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName().toString()));
+        });
+        return authorities;
     }
 
     public User registerUser(User user) {
