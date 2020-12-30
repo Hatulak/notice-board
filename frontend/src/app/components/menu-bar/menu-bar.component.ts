@@ -14,7 +14,7 @@ export class MenuBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout() {
+  logout(): void {
     this.userService.logout();
   }
 }
