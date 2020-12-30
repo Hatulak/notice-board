@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <mat-card>
+      <form #registrationForm="ngForm">
+        <mat-card-content>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Login</mat-label>
+              <input type="text" matInput [(ngModel)]="user.username" name="username" required>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input  type="email" matInput [(ngModel)]="user.email" name="email"  required email
+                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input type="password" [(ngModel)]="user.password" matInput name="password" required>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="form-group">
+            <button class="button" mat-raised-button color="primary" (click)="registerUser()" [disabled]="registrationForm.form.invalid" >Sign up</button>
+          </div>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>
