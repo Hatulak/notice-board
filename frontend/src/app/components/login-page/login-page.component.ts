@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginModelDto} from '../../models/forms/loginModelDto';
+import {LoginModelDto} from '../../models/forms/login-model-dto';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,13 +10,13 @@ import {LoginModelDto} from '../../models/forms/loginModelDto';
 export class LoginPageComponent implements OnInit {
   loginModel: LoginModelDto = new LoginModelDto();
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
   }
 
   authenticate(): void {
-    console.log('login');
+    this.userService.authenticate(this.loginModel);
   }
 }

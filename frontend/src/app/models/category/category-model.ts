@@ -1,4 +1,4 @@
-export interface Role {
+export interface CategoryModel {
   id?: number;
   name?: string;
 }
