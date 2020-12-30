@@ -20,7 +20,7 @@ import {RegistrationPageComponent} from './components/registration-page/registra
 import {AuthGuardService} from './services/auth/auth-guard.service';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {AuthInterceptorService} from './services/auth/auth-interceptor.service';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import {AuthInterceptorService} from './services/auth/auth-interceptor.service';
     MatButtonModule,
     MatInputModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   providers: [
     {
