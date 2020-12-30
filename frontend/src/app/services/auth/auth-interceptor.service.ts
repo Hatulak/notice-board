@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (sessionStorage.getItem('token') != null) {
       authReq = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))});
     }
-    return next.handle(authReq).pipe(catchError((error: HttpErrorResponse) => {
+    return next.handle(authReq).pipe(catchError(  (error: HttpErrorResponse) => {
       if (error.status === 401) {
         this.messageService.displayErrorMessage('Session expired!');
         sessionStorage.clear();
