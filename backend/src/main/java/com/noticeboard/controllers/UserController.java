@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/")
 public class UserController {
 
-    private JwtUserDetailsService jwtUserDetailsService;
+    private final JwtUserDetailsService jwtUserDetailsService;
 
     private final AuthenticationManager authenticationManager;
 

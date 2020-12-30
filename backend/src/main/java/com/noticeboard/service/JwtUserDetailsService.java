@@ -22,11 +22,11 @@ import java.util.stream.Stream;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private PasswordEncoder bcryptEncoder;
+    private final PasswordEncoder bcryptEncoder;
 
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     public JwtUserDetailsService(UserRepository userRepository, PasswordEncoder bcryptEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
