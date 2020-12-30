@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"tes2\",\r\n    \"email\": \"te232t@test.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"raw": "{\r\n    \"username\": \"test\",\r\n    \"email\": \"test@admin.com\",\r\n    \"password\": \"1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -31,6 +31,180 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsIlJPTEVTIjpbeyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiZXhwIjoxNjA5MzU1NTk5LCJpYXQiOjE2MDkzMzc1OTl9.2d_uR8RRK46q0w3Zw_ueaLrosH8mto7GOP_4RS89SrDm66WKIxZukHK36PEykcl0zHSee9tki6TybhXIlEbyfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"News\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/category",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/category",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Category By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/category/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"category",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsIlJPTEVTIjpbeyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiZXhwIjoxNjA5MzU1NTk5LCJpYXQiOjE2MDkzMzc1OTl9.2d_uR8RRK46q0w3Zw_ueaLrosH8mto7GOP_4RS89SrDm66WKIxZukHK36PEykcl0zHSee9tki6TybhXIlEbyfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"CHANGED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/category",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category By ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsIlJPTEVTIjpbeyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiZXhwIjoxNjA5MzU1NTk5LCJpYXQiOjE2MDkzMzc1OTl9.2d_uR8RRK46q0w3Zw_ueaLrosH8mto7GOP_4RS89SrDm66WKIxZukHK36PEykcl0zHSee9tki6TybhXIlEbyfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/category/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"category",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -42,6 +216,5 @@
 				"type": "string"
 			}
 		]
-	},
-	"protocolProfileBehavior": {}
+	}
 }
