@@ -21,6 +21,7 @@ import {AuthGuardService} from './services/auth/auth-guard.service';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {AuthInterceptorService} from './services/auth/auth-interceptor.service';
 import {MatMenuModule} from '@angular/material/menu';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MainPageComponent,
     MenuBarComponent,
     LoginPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
