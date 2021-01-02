@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Map;
 
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class Notice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private BigDecimal price; //Prize in polish grosz: 100 groszy - 1 PLN
+    private BigInteger price; //Prize in polish grosz: 100 groszy - 1 PLN
     private String description;
     @ManyToOne
     @JoinColumn(name = "category_id")

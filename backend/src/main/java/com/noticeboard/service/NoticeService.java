@@ -9,7 +9,9 @@ import com.noticeboard.repositories.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoticeService {
@@ -42,16 +44,20 @@ public class NoticeService {
     }
 
     public void deleteById(Long id) {
-
+        noticeRepository.deleteById(id);
     }
 
     public List<Notice> getAll() {
-
-        return null;
+        return noticeRepository.findAll();
     }
 
     public Notice getById(Long id) {
+        Optional<Notice> noticeById = noticeRepository.findById(id);
+        if (noticeById.isPresent()) return noticeById.get();
+        else throw new EntityNotFoundException("There is no notice with id: " + id);
+    }
 
-        return null;
+    public Notice update(NoticeDTO noticeDTO, String username) {
+        return createNotice(noticeDTO,username);
     }
 }

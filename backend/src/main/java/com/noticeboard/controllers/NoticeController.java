@@ -28,8 +28,9 @@ public class NoticeController {
     }
 
     @PutMapping
-    public Notice updateNotice(@RequestBody Notice notice) {
-        return noticeService.save(notice);
+    public Notice updateNotice(@RequestBody NoticeDTO notice, Principal principal) {
+        String ownerUsername = principal.getName();
+        return noticeService.update(notice, ownerUsername);
     }
 
     @DeleteMapping("/{id}")
