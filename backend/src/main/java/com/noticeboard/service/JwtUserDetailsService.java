@@ -52,6 +52,14 @@ public class JwtUserDetailsService implements UserDetailsService {
                 getAuthorities(user.get()));
     }
 
+    public User getUserEntityByUsername(String username){
+        Optional<User> user = userRepository.findByUsername(username);
+        if (!user.isPresent()) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return user.get();
+    }
+
     private Set<SimpleGrantedAuthority> getAuthorities(User user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         user.getRoles().forEach(role -> {

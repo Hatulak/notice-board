@@ -1,5 +1,6 @@
 package com.noticeboard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private Set<Notice> noticeList;
 }
