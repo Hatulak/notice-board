@@ -60,7 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(corsConfigurationSource()).and()
                 .authorizeRequests().antMatchers("/register", "/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/category/**").permitAll()
-                .antMatchers("/category/**").hasAuthority(RoleName.ADMIN.toString())
+                //todo need to fix it user after registration dont get any role? cause roles dont create at app startup if db is empty
+                //.antMatchers("/category/**").hasAuthority(RoleName.ADMIN.toString())
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -71,11 +72,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","*"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedMethods(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedMethod("*");
-        configuration.addAllowedOrigin("*");
         configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

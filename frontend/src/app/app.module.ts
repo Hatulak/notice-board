@@ -22,6 +22,10 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/materia
 import {AuthInterceptorService} from './services/auth/auth-interceptor.service';
 import {MatMenuModule} from '@angular/material/menu';
 import { FooterComponent } from './components/footer/footer.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { FooterComponent } from './components/footer/footer.component';
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     {
