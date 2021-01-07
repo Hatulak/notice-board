@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatSortModule} from '@angular/material/sort';
     MenuBarComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    FooterComponent
+    FooterComponent,
+    CreateNoticeComponent
   ],
   imports: [
     BrowserModule,

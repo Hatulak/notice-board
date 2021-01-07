@@ -5,6 +5,7 @@ export interface NoticeModel {
   id?: number;
   title?: string;
   description?: string;
+  price?: number;
   category?: CategoryModel;
   owner?: UserModel;
 

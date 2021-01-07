@@ -1,0 +1,11 @@
+.button {
+  width: 120px;
+}
+mat-card{
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}

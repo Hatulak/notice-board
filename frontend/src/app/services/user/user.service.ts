@@ -43,7 +43,6 @@ export class UserService {
   }
 
   register(user: UserModelDto): Observable<UserModel> {
-    console.log(user);
     return this.httpClient.post<UserModel>(environment.baseUrl + 'register', user);
   }
 }

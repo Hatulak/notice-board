@@ -23,11 +23,10 @@ export class RegistrationPageComponent implements OnInit {
   registerUser(): void {
     this.userService.register(this.user).subscribe(
       (data: UserModel) => {
-        console.log(data);
+        this.router.navigate(['login']);
       },
       error => {
         this.messageService.displayErrorMessage('Problem with registration');
-        console.error(error);
       }
     );
   }
