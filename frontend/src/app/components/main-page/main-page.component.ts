@@ -15,10 +15,12 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
   categories: CategoryModel[];
+  selectedCat: number[];
   displayedColumns: string[] = ['id', 'title', 'description', 'price', 'category', 'owner'];
   dataSource: MatTableDataSource<NoticeModel> = new MatTableDataSource();
   expandedElement: NoticeModel | null;
   private notice: NoticeModel[];
+  private noticeOriginal: NoticeModel[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -53,9 +55,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.noticeService.getAllNotice().subscribe(
       data => {
         this.notice = data;
-        this.dataSource = new MatTableDataSource(this.notice);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.noticeOriginal = data;
+        this.fillTable(this.notice);
       },
       error => {
         this.messageService.displayErrorMessage('Problem with loading notice!');
@@ -69,5 +70,23 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onSelectChange(): void {
+    console.log(this.selectedCat);
+    console.log(this.notice);
+    if (Array.isArray(this.selectedCat) && this.selectedCat.length) {
+      this.notice = this.noticeOriginal.filter(p => this.selectedCat.includes(p.category.id));
+      this.fillTable(this.notice);
+    } else {
+      this.notice = this.noticeOriginal;
+      this.fillTable(this.notice);
+    }
+  }
+
+  private fillTable(notice: NoticeModel[]): void {
+    this.dataSource = new MatTableDataSource(notice);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }

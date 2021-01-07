@@ -1,3 +1,7 @@
+.container {
+  min-width: 80%;
+}
+
 table {
   width: 100%;
 }
@@ -5,6 +9,29 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.select-cat {
+  font-size: 14px;
+  width: 50%;
+}
+
+.mat-card-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-cat-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-card {
+  min-width: 80%;
+  margin-top: 15px;
+  margin-bottom: 150px;
 }
 
 td, th {
