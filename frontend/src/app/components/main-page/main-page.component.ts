@@ -87,6 +87,20 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   private fillTable(notice: NoticeModel[]): void {
     this.dataSource = new MatTableDataSource(notice);
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'category':
+          return item.category.name;
+        case 'owner':
+          return item.owner.username;
+        default:
+          return item[property];
+      }
+    };
     this.dataSource.sort = this.sort;
+    this.dataSource.filterPredicate = (data: any, filter) => {
+      const dataStr = JSON.stringify(data).toLowerCase();
+      return dataStr.indexOf(filter) !== -1;
+    };
   }
 }
