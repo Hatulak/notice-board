@@ -27,6 +27,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateNoticeComponent } from './components/create-notice/create-notice.
     LoginPageComponent,
     RegistrationPageComponent,
     FooterComponent,
-    CreateNoticeComponent
+    CreateNoticeComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

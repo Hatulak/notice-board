@@ -18,7 +18,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   selectedCat: number[];
   displayedColumns: string[] = ['id', 'title', 'description', 'price', 'category', 'owner'];
   dataSource: MatTableDataSource<NoticeModel> = new MatTableDataSource();
-  expandedElement: NoticeModel | null;
   private notice: NoticeModel[];
   private noticeOriginal: NoticeModel[];
 

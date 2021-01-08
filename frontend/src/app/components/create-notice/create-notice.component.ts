@@ -40,7 +40,7 @@ export class CreateNoticeComponent implements OnInit {
   createNotice(): void {
     this.noticeService.createNotice(this.noticeModel).subscribe(
       data => {
-        this.messageService.displaySuccessMessage('Notice created!');
+        this.messageService.displaySuccessMessage('Successfully created notice!');
         this.router.navigate(['']);
       },
       error => {

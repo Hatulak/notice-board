@@ -4,5 +4,4 @@ export class NoticeModelDto {
               public categoryId?: number,
               public price?: number) {
   }
-
 }
