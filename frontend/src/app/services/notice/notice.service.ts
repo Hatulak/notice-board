@@ -21,4 +21,13 @@ export class NoticeService {
   createNotice(notice: NoticeModelDto): Observable<NoticeModel> {
     return this.httpClient.post<NoticeModel>(environment.baseUrl + 'notice', notice);
   }
+
+  updateNotice(notice: NoticeModelDto): Observable<NoticeModel> {
+    return this.httpClient.put<NoticeModel>(environment.baseUrl + 'notice', notice);
+
+  }
+
+  deleteNotice(notice: NoticeModel): Observable<any> {
+    return this.httpClient.delete<any>(environment.baseUrl + 'notice/' + notice.id);
+  }
 }

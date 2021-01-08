@@ -21,13 +21,13 @@ import {AuthGuardService} from './services/auth/auth-guard.service';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {AuthInterceptorService} from './services/auth/auth-interceptor.service';
 import {MatMenuModule} from '@angular/material/menu';
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
-import { CategoryComponent } from './components/category/category.component';
+import {CategoryComponent} from './components/category/category.component';
+import {NoticeComponent} from './components/notice/notice.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,8 @@ import { CategoryComponent } from './components/category/category.component';
     LoginPageComponent,
     RegistrationPageComponent,
     FooterComponent,
-    CreateNoticeComponent,
-    CategoryComponent
+    CategoryComponent,
+    NoticeComponent
   ],
   imports: [
     BrowserModule,
