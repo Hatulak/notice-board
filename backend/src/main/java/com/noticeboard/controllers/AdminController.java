@@ -1,5 +1,6 @@
 package com.noticeboard.controllers;
 
+import com.noticeboard.aspects.LogExecution;
 import com.noticeboard.model.User;
 import com.noticeboard.model.dtos.ChangeRoleDTO;
 import com.noticeboard.service.AdminService;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
+@LogExecution
 public class AdminController {
 
     private final AdminService adminService;

@@ -1,5 +1,6 @@
 package com.noticeboard.controllers;
 
+import com.noticeboard.aspects.LogExecution;
 import com.noticeboard.model.Category;
 import com.noticeboard.model.Notice;
 import com.noticeboard.model.dtos.NoticeDTO;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RequestMapping("/notice")
 @RestController
+@LogExecution
 public class NoticeController {
 
     private final NoticeService noticeService;

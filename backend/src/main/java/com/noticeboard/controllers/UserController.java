@@ -1,5 +1,6 @@
 package com.noticeboard.controllers;
 
+import com.noticeboard.aspects.LogExecution;
 import com.noticeboard.config.security.JwtRequest;
 import com.noticeboard.config.security.JwtResponse;
 import com.noticeboard.config.security.JwtTokenUtil;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController("/")
+@LogExecution
 public class UserController {
 
     private final JwtUserDetailsService jwtUserDetailsService;

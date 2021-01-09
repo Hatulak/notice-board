@@ -1,5 +1,6 @@
 package com.noticeboard.controllers;
 
+import com.noticeboard.aspects.LogExecution;
 import com.noticeboard.model.Category;
 import com.noticeboard.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @RequestMapping("/category")
 @RestController
+@LogExecution
 public class CategoryController {
 
     private final CategoryService categoryService;
