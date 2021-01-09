@@ -48,8 +48,7 @@ export class NoticeComponent implements OnInit {
   }
 
   private loadNotice(): void {
-    // todo change to load user notice not all notice
-    this.noticeService.getAllNotice().subscribe(
+    this.noticeService.getUserNotice().subscribe(
       data => {
         this.notice = data;
         this.fillTable(this.notice);
