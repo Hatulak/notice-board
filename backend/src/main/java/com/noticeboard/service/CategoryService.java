@@ -3,6 +3,7 @@ package com.noticeboard.service;
 import com.noticeboard.model.Category;
 import com.noticeboard.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.MethodNotAllowedException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -32,6 +33,9 @@ public class CategoryService {
     }
 
     public void deleteById(Long id) {
-        categoryRepository.deleteById(id);
+        Category category = categoryRepository.getOne(id);
+        if (category.getNoticeList().isEmpty())
+            categoryRepository.deleteById(id);
+        else throw new RuntimeException("Cannot delete category that has notices");
     }
 }

@@ -1,10 +1,11 @@
 package com.noticeboard.service;
 
-import com.noticeboard.model.Role;
 import com.noticeboard.model.RoleName;
 import com.noticeboard.model.User;
 import com.noticeboard.repositories.RoleRepository;
 import com.noticeboard.repositories.UserRepository;
+import com.noticeboard.service.events.OnRegistrationCompleteEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -28,10 +28,13 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     private final RoleRepository roleRepository;
 
-    public JwtUserDetailsService(UserRepository userRepository, PasswordEncoder bcryptEncoder, RoleRepository roleRepository) {
+    private final ApplicationEventPublisher applicationEventPublisher;
+
+    public JwtUserDetailsService(UserRepository userRepository, PasswordEncoder bcryptEncoder, RoleRepository roleRepository, ApplicationEventPublisher applicationEventPublisher) {
         this.userRepository = userRepository;
         this.bcryptEncoder = bcryptEncoder;
         this.roleRepository = roleRepository;
+        this.applicationEventPublisher = applicationEventPublisher;
     }
 
 
@@ -75,6 +78,9 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setEmail(user.getEmail());
         newUser.setRoles(Stream.of(roleRepository.findByName(RoleName.USER))
                 .collect(Collectors.toSet()));
+
+        applicationEventPublisher.publishEvent(new OnRegistrationCompleteEvent(newUser));
+
         return userRepository.save(newUser);
     }
 }
