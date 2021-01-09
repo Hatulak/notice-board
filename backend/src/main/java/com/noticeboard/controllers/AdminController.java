@@ -1,5 +1,6 @@
 package com.noticeboard.controllers;
 
+import com.noticeboard.aspects.LogExecution;
 import com.noticeboard.model.User;
 import com.noticeboard.model.dtos.ChangeRoleDTO;
 import com.noticeboard.service.AdminService;
@@ -7,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
+@LogExecution
 public class AdminController {
 
     private final AdminService adminService;
@@ -27,5 +30,10 @@ public class AdminController {
     @DeleteMapping("/user/{userId}")
     public void deleteUser(@PathVariable Long userId){
         adminService.deleteUser(userId);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers(){
+        return adminService.getAllUsers();
     }
 }
