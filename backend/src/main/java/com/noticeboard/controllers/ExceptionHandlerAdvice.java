@@ -11,12 +11,12 @@ import javax.persistence.EntityNotFoundException;
 public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity handleException(RuntimeException e){
+    public ResponseEntity<String>  handleException(RuntimeException e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity handleException(EntityNotFoundException e){
+    public ResponseEntity<String> handleException(EntityNotFoundException e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

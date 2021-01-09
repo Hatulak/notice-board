@@ -28,6 +28,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {CategoryComponent} from './components/category/category.component';
 import {NoticeComponent} from './components/notice/notice.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {NoticeComponent} from './components/notice/notice.component';
     RegistrationPageComponent,
     FooterComponent,
     CategoryComponent,
-    NoticeComponent
+    NoticeComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

@@ -45,4 +45,13 @@ export class UserService {
   register(user: UserModelDto): Observable<UserModel> {
     return this.httpClient.post<UserModel>(environment.baseUrl + 'register', user);
   }
+
+  getAllUsers(): Observable<UserModel[]> {
+    return this.httpClient.get<UserModel[]>(environment.baseUrl + '/admin/user');
+
+  }
+
+  deleteUser(user: UserModel): Observable<any> {
+    return this.httpClient.delete<UserModel[]>(environment.baseUrl + '/admin/user/' + user.id);
+  }
 }

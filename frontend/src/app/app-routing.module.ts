@@ -7,12 +7,14 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {AuthGuardService} from './services/auth/auth-guard.service';
 import {CategoryComponent} from './components/category/category.component';
 import {NoticeComponent} from './components/notice/notice.component';
+import {UsersComponent} from './components/users/users.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'registration', component: RegistrationPageComponent},
   {path: 'user-notice', component: NoticeComponent, canActivate: [AuthGuardService]},
   {path: 'category', component: CategoryComponent, canActivate: [AuthGuardService]},
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuardService]},
   {path: '', component: MainPageComponent, canActivate: [AuthGuardService]},
 ];
 
