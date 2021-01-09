@@ -395,6 +395,74 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Change User Role",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiUk9MRVMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImV4cCI6MTYxMDIyMTk4NCwiaWF0IjoxNjEwMjAzOTg0fQ.Ge9xEoDFPRSOZ5rpvZtTPYP4mcBdnlz6rAk1saioR-TQ3My8SBtgXvz0wR3JpCfSBbCSyhGqppDnbuwPlrqiNQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 4,\r\n    \"newRoleName\": \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/admin/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"admin",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiUk9MRVMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImV4cCI6MTYxMDIyNjE3NSwiaWF0IjoxNjEwMjA4MTc1fQ.apQeSOm-FgbFJZjCe9T9psllueMZJZ7Y_aXi0NwhQjM-9UlM15qHACerB0Ob1KBNauXuAEZvpb54NGRwTUavrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/admin/user/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"admin",
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
