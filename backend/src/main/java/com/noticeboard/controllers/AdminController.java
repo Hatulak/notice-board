@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
@@ -27,5 +28,10 @@ public class AdminController {
     @DeleteMapping("/user/{userId}")
     public void deleteUser(@PathVariable Long userId){
         adminService.deleteUser(userId);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers(){
+        return adminService.getAllUsers();
     }
 }
