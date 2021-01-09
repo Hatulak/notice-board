@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NoticeService {
@@ -59,5 +62,10 @@ public class NoticeService {
 
     public Notice update(NoticeDTO noticeDTO, String username) {
         return createNotice(noticeDTO,username);
+    }
+
+    public List<Notice> getUserNotices(String username) {
+        User user = jwtUserDetailsService.getUserEntityByUsername(username);
+        return new LinkedList<>(user.getNoticeList());
     }
 }

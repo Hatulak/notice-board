@@ -365,6 +365,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get User Notices By USERNAME",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiUk9MRVMiOlt7ImF1dGhvcml0eSI6IlVTRVIifV0sImV4cCI6MTYxMDIxNTYxNiwiaWF0IjoxNjEwMTk3NjE2fQ.z_q5Weiqss2RpK4p1SE9TI3x9Cy56c8R7hqP2pllzNubm-HpYc-MIyl1wRs08kVkiu7-Ol29yR6VH-cScVyH7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/notice/user/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"notice",
+						"user",
+						"test"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {

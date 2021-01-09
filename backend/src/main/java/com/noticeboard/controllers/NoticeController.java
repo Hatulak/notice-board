@@ -48,5 +48,10 @@ public class NoticeController {
         return noticeService.getById(id);
     }
 
+    @GetMapping(value = "/user/{username}")
+    public List<Notice> getUserNotices(@PathVariable String username){
+        return noticeService.getUserNotices(username);
+    }
+
 
 }
