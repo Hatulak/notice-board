@@ -1,18 +1,17 @@
 <mat-toolbar color="primary">
   <span>Notice board</span>
-  <button mat-flat-button [routerLink]="'/'" color="primary" class="menu-bar-button"> Main page </button>
-  <button mat-flat-button [routerLink]="'/user-notice'" color="primary" class="menu-bar-button"> My notice </button>
-  <button mat-flat-button [routerLink]="'/category'" color="primary" class="menu-bar-button"> Categories </button>
-  <button mat-flat-button [routerLink]="'/users'" color="primary" class="menu-bar-button"> Users </button>
+  <button mat-flat-button [routerLink]="'/'" color="primary" class="menu-bar-button"  *ngIf="isLogged"> Main page </button>
+  <button mat-flat-button [routerLink]="'/user-notice'" color="primary" class="menu-bar-button"  *ngIf="isLogged"> My notice </button>
+  <button mat-flat-button [routerLink]="'/category'" color="primary" class="menu-bar-button" *ngIf="isAdmin"> Categories </button>
+  <button mat-flat-button [routerLink]="'/users'" color="primary" class="menu-bar-button" *ngIf="isAdmin"> Users </button>
   <span class="example-spacer"></span>
-  <button mat-raised-button [routerLink]="'/login'" color="primary"> Sign in </button>
-  <button mat-raised-button [routerLink]="'/registration'" color="primary"> Sign up </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+  <button mat-raised-button [routerLink]="'/login'" color="primary" *ngIf="!isLogged"> Sign in </button>
+  <button mat-raised-button [routerLink]="'/registration'" color="primary" *ngIf="!isLogged"> Sign up </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu" *ngIf="isLogged">
     <mat-icon>menu</mat-icon>
     <mat-menu #menu="matMenu">
-      <p mat-menu-item disabled>Username tu sie wstawi xd: </p>
+      <p mat-menu-item disabled>{{tokenModelDto?.sub}}</p>
       <button mat-menu-item (click)="logout()">Logout</button>
-      <button mat-menu-item>Coś dalej</button>
     </mat-menu>
   </button>
 </mat-toolbar>

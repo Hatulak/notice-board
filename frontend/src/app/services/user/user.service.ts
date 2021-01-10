@@ -5,23 +5,33 @@ import {environment} from '../../../environments/environment';
 import {MessageService} from '../message/message.service';
 import {UserModelDto} from '../../models/forms/user-model-dto';
 import {UserModel} from '../../models/user/user-model';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {ChangeRoleDto} from '../../models/user/change-role-dto';
+import {JwtService} from '../auth/jwt.service';
+import {TokenModelDto} from '../../models/user/token-model-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  isLogged: boolean = false;
+  isAdmin: boolean = false;
+  isLoggedChange: Subject<boolean> = new Subject<boolean>();
+  isAdminChange: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private httpClient: HttpClient, private messageService: MessageService, private route: Router) {
+  constructor(private httpClient: HttpClient, private messageService: MessageService, private route: Router, private jwtService: JwtService) {
   }
+
 
   authenticate(loginModel: LoginModelDto): void {
     this.httpClient.post<any>(environment.baseUrl + 'login', loginModel).subscribe(
       data => {
         console.log(data.token);
         sessionStorage.setItem('token', data.token);
+        const modelDto: TokenModelDto = this.jwtService.decodeToken(data.token);
+        this.isLoggedChange.next(true);
+        this.isAdminChange.next(modelDto.ROLES[0]['authority'] === 'ADMIN');
         this.route.navigate(['']);
       },
       error => {
@@ -32,14 +42,14 @@ export class UserService {
   }
 
   isAuthenticated(): boolean {
-    // todo create method to check if authenticate
     const token = sessionStorage.getItem('token');
     return !(token === null);
   }
 
   logout(): void {
-    // todo logut when enpoint showups
     sessionStorage.clear();
+    this.isLoggedChange.next(false);
+    this.isAdminChange.next(false);
     this.route.navigate(['login']);
   }
 
