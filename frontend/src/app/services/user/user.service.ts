@@ -7,6 +7,7 @@ import {UserModelDto} from '../../models/forms/user-model-dto';
 import {UserModel} from '../../models/user/user-model';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import {ChangeRoleDto} from '../../models/user/change-role-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -47,11 +48,15 @@ export class UserService {
   }
 
   getAllUsers(): Observable<UserModel[]> {
-    return this.httpClient.get<UserModel[]>(environment.baseUrl + '/admin/user');
+    return this.httpClient.get<UserModel[]>(environment.baseUrl + 'admin/users');
 
   }
 
   deleteUser(user: UserModel): Observable<any> {
-    return this.httpClient.delete<UserModel[]>(environment.baseUrl + '/admin/user/' + user.id);
+    return this.httpClient.delete<UserModel[]>(environment.baseUrl + 'admin/user/' + user.id);
+  }
+
+  changeUserRole(changeRoleDto: ChangeRoleDto): Observable<UserModel> {
+    return this.httpClient.put<UserModel>(environment.baseUrl + 'admin/user', changeRoleDto);
   }
 }

@@ -14,9 +14,10 @@ import {ChangeRoleDto} from '../../models/user/change-role-dto';
 })
 export class UsersComponent implements OnInit {
   private users: UserModel[];
-  displayedColumns: string[] = ['id', 'username', 'role'];
+  changeRoleDto: ChangeRoleDto = new ChangeRoleDto();
+  displayedColumns: string[] = ['id', 'username', 'role', 'actions'];
   dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
-
+  isVisible: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -61,6 +62,7 @@ export class UsersComponent implements OnInit {
         this.messageService.displaySuccessMessage('Successfully delete user!');
         this.users = this.users.filter(p => p.id !== user.id);
         this.fillTable(this.users);
+        this.changeRoleDto = new ChangeRoleDto();
       },
       error => {
         this.messageService.displayErrorMessage('Problem with deleting user!');
@@ -69,15 +71,30 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  updateUserRole(user: UserModel): void {
-
+  updateUserRole(changeRoleDto: ChangeRoleDto): void {
+    this.userService.changeUserRole(changeRoleDto).subscribe(
+      data => {
+        this.messageService.displaySuccessMessage('Successfully change user role!');
+        this.loadUsers();
+        this.fillTable(this.users);
+        this.changeRoleDto = new ChangeRoleDto();
+      },
+      error => {
+        this.messageService.displayErrorMessage('Problem with changing user role!');
+        console.log(error);
+      }
+    );
   }
 
   editUser(user: UserModel): void {
-
+    this.changeRoleDto = new ChangeRoleDto(user.id, user.username, user.roles[0]?.name);
   }
 
   changeRole(): void {
+    this.updateUserRole(this.changeRoleDto);
+  }
 
+  showForm() {
+    this.isVisible = !this.isVisible;
   }
 }
