@@ -21,7 +21,7 @@ public class Notice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private BigInteger price; //Prize in polish grosz: 100 groszy - 1 PLN
+    private Float price;
     private String description;
     @ManyToOne
     @JoinColumn(name = "category_id")

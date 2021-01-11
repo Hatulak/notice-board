@@ -1,0 +1,23 @@
+version: '3'
+services:
+  notice-board:
+    build: ./backend
+    ports:
+      - "8081:8081" #app port
+    depends_on:
+      - database_postgres
+  database_postgres:
+    container_name: database_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: notice-board
+    ports:
+      - "54321:5432"
+  frontend:
+    build: ./frontend
+    ports:
+    - "4200:80"
+    depends_on:
+      - notice-board

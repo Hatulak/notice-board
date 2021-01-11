@@ -14,7 +14,7 @@ import java.math.BigInteger;
 public class NoticeDTO {
     private Long id;
     private String title;
-    private BigInteger price; //Prize in polish grosz: 100 groszy - 1 PLN
+    private Float price;
     private String description;
     private Long categoryId;
 }
