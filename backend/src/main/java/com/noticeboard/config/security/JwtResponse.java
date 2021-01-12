@@ -1,16 +1,22 @@
 package com.noticeboard.config.security;
 
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+
+@NoArgsConstructor
+@Setter
 public class JwtResponse implements Serializable {
 
-    private final String jwttoken;
+    private String token;
 
-    public JwtResponse(String jwttoken) {
-        this.jwttoken = jwttoken;
+    public JwtResponse(String token) {
+        this.token = token;
     }
 
     public String getToken() {
-        return this.jwttoken;
+        return this.token;
     }
 }
